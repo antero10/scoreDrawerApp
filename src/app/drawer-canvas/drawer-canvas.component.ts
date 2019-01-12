@@ -15,7 +15,7 @@ export class DrawerCanvasComponent implements OnInit {
   prevY: number;
   currY: number;
   dot_flag: boolean;
-  x: string;
+  color: string;
   y: number;
 
   constructor() {
@@ -27,7 +27,7 @@ export class DrawerCanvasComponent implements OnInit {
     this.prevY = 0;
     this.currY = 0;
     this.dot_flag = false;
-    this.x = 'black';
+    this.color = 'black';
     this.y = 2;
   }
 
@@ -35,13 +35,13 @@ export class DrawerCanvasComponent implements OnInit {
     this.ctx.beginPath();
     this.ctx.moveTo(this.prevX, this.prevY);
     this.ctx.lineTo(this.currX, this.currY);
-    this.ctx.strokeStyle = this.x;
+    this.ctx.strokeStyle = this.color;
     this.ctx.lineWidth = this.y;
     this.ctx.stroke();
     this.ctx.closePath();
   }
   ngOnInit() {
-    this.canvas = document.getElementById('can');
+    this.canvas = document.getElementById('canvas');
     this.ctx = this.canvas.getContext('2d');
     const w = this.canvas.width;
     const h = this.canvas.height;
@@ -71,7 +71,7 @@ export class DrawerCanvasComponent implements OnInit {
       this.dot_flag = true;
       if (this.dot_flag) {
           this.ctx.beginPath();
-          this.ctx.fillStyle = this.x;
+          this.ctx.fillStyle = this.color;
           this.ctx.fillRect(this.currX, this.currY, 2, 2);
           this.ctx.closePath();
           this.dot_flag = false;
