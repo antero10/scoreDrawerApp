@@ -11,7 +11,6 @@
                     <input #strong type="range" value="1" min="1" max="50" (input)="strongChange($event)" />
                 </p>
             </form>
-            <a class="btn-floating btn-floating grey lighten-5"><i  class="material-icons grey-text text-darken-4">font_download</i></a>
             <label for="color">
                 <a class="btn-floating btn-floating grey lighten-5" (click)="activeDrawing(true)"><i class="material-icons" [ngStyle]="{ 'color': canvas.freeDrawingBrush.color }" (click)="addText($event)">palette</i></a>            
             </label>
