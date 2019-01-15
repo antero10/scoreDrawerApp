@@ -12,8 +12,7 @@ export class BrandComponent {
     let scrollOffset = $event.srcElement.children[0].scrollTop;
     if (scrollOffset < 5) {
       this.isNav = false;
-    }
-    else {
+    } else {
       this.isNav = true;
     }
   }
