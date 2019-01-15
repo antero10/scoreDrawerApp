@@ -41,7 +41,7 @@ export class DrawerCanvasComponent implements OnInit {
       this.canvas.add(img).setActiveObject(img);
     });
     if (this.canvas.freeDrawingBrush) {
-      this.canvas.freeDrawingBrush.color = this.colorInput.nativeElement.value || '#4286f4';
+      this.canvas.freeDrawingBrush.color = this.colorInput.nativeElement.value || '#000000';
       this.canvas.freeDrawingBrush.width = 1;
     }
     this.resize();
@@ -57,7 +57,7 @@ export class DrawerCanvasComponent implements OnInit {
     this.canvas.isDrawingMode = active;
   }
   colorChange(event: any) {
-    this.canvas.freeDrawingBrush.color = this.colorInput.nativeElement.value || '#4286f4';
+    this.canvas.freeDrawingBrush.color = this.colorInput.nativeElement.value || '#000000';
   }
   clearCanvas(event: any) {
     this.canvas.clear();
