@@ -1,12 +1,12 @@
 version: 2
 jobs:
  build:
+  machine: true
   branches:
       only:
         - master
-   machine: true
-   steps:
-     - checkout
-     - run: |
-         docker login -u $DOCKER_USER -p $DOCKER_PASS
-     - run: docker build -t brandm3diagroup/startbucks-drawer .
+  steps:
+    - checkout
+    - run: |
+        docker login -u $DOCKER_USER -p $DOCKER_PASS
+    - run: docker build -t brandm3diagroup/startbucks-drawer .
