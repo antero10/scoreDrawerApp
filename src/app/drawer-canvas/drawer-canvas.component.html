@@ -12,7 +12,6 @@
                 </p>
             </form>
             <a class="btn-floating btn-floating grey lighten-5"><i  class="material-icons grey-text text-darken-4">font_download</i></a>
-            <a class="btn-floating btn-floating grey lighten-5" (click)="newDraw($event)"><i  class="material-icons grey-text text-darken-4">select_all</i></a>
             <label for="color">
                 <a class="btn-floating btn-floating grey lighten-5" (click)="activeDrawing(true)"><i class="material-icons" [ngStyle]="{ 'color': canvas.freeDrawingBrush.color }" (click)="addText($event)">palette</i></a>            
             </label>
