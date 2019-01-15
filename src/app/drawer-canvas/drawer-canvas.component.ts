@@ -1,12 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { fabric } from 'fabric';
+
 @Component({
   selector: 'app-drawer-canvas',
   templateUrl: './drawer-canvas.component.html',
   styleUrls: ['./drawer-canvas.component.sass']
 })
-export class DrawerCanvasComponent implements OnInit {
 
+export class DrawerCanvasComponent implements OnInit {
+  isNav: boolean;
+  @HostListener("window:scroll", ['$event'])
+  doSomethingOnWindowsScroll($event:Event){
+    let scrollOffset = $event.srcElement.children[0].scrollTop;
+    if (scrollOffset < 5) {
+      this.isNav = false;
+    } else {
+      this.isNav = true;
+    }
+  }
   ctx: any;
   canvas: any;
   flag: boolean;
@@ -87,7 +98,7 @@ export class DrawerCanvasComponent implements OnInit {
   }
   resize() {
     this.canvas.setWidth(window.innerWidth);
-    this.canvas.setHeight(1000);
+    this.canvas.setHeight(window.innerHeight + 10);
   }
 
 }
