@@ -1,12 +1,27 @@
 .tool-options
   position: absolute
-  bottom: auto
-  top: 150px
+  top: 170px
   right: 40px
   visibility: hidden
   opacity: 0
   transition: .3s
-  height: 420px
+  .tools
+    transition: .3s
+  .tools-close
+    opacity: 0
+    visibility: hidden
+  .tools-open
+    opacity: 1
+    visibility: visible
+  a
+    display: block
+    margin: 20px 0px
+.range-select
+  position: absolute
+  margin-left: -220px
+  width: 200px
+  margin-top: -70px
+  transition: .3s
 .tools-show
   visibility: visible !important
   opacity: 1 !important
@@ -16,8 +31,8 @@
   opacity: 0
   transition: .3s !important
 .btn-undo
-  top: 175px
-  left: 20px
+  top: 190px
+  left: 40px
 .btn-screen
   bottom: 20px
-  right: 23px
+  right: 40px

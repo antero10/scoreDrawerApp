@@ -16,6 +16,7 @@ export class DrawerCanvasComponent implements OnInit {
 
   canvas: any;
   @ViewChild('color') colorInput;
+  @ViewChild('strong') strongInput;
   @HostListener('window:scroll', ['$event'])
 
   doSomethingOnWindowsScroll($event: any) {
@@ -58,6 +59,9 @@ export class DrawerCanvasComponent implements OnInit {
   }
   colorChange(event: any) {
     this.canvas.freeDrawingBrush.color = this.colorInput.nativeElement.value || '#000000';
+  }
+  strongChange(event: any) {
+    this.canvas.freeDrawingBrush.width = this.strongInput.nativeElement.value;
   }
   clearCanvas(event: any) {
     this.canvas.clear();
