@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { fabric } from 'fabric';
 @Component({
   selector: 'app-drawer-canvas',
   templateUrl: './drawer-canvas.component.html',
@@ -41,56 +41,53 @@ export class DrawerCanvasComponent implements OnInit {
     this.ctx.closePath();
   }
   ngOnInit() {
-    this.canvas = document.getElementById('canvas');
-    this.ctx = this.canvas.getContext('2d');
-    const w = this.canvas.width;
-    const h = this.canvas.height;
-
-    this.canvas.addEventListener('mousemove', (e) => {
-        this.findxy('move', e);
-    }, false);
-    this.canvas.addEventListener('mousedown', (e) => {
-        this.findxy('down', e);
-    }, false);
-    this.canvas.addEventListener('mouseup', (e) => {
-        this.findxy('up', e);
-    }, false);
-    this.canvas.addEventListener('mouseout', (e) => {
-        this.findxy('out', e);
-    }, false);
-  }
-
-  findxy(res: string, e: any) {
-    if (res === 'down') {
-      this.prevX = this.currX;
-      this.prevY = this.currY;
-      this.currX = e.clientX - this.canvas.offsetLeft;
-      this.currY = e.clientY - this.canvas.offsetTop;
-
-      this.flag = true;
-      this.dot_flag = true;
-      if (this.dot_flag) {
-          this.ctx.beginPath();
-          this.ctx.fillStyle = this.color;
-          this.ctx.fillRect(this.currX, this.currY, 2, 2);
-          this.ctx.closePath();
-          this.dot_flag = false;
+    this.canvas = new fabric.Canvas('canvas', {
+      isDrawingMode: true
+    });
+    fabric.Image.fromURL('https://www.askideas.com/media/16/Pug-Puppy-Running-On-Grass.jpg', (img) => {
+      img.scale(0.5).set({
+        left: 150,
+        top: 150,
+        width: 100,
+        height: 100,
+        angle: -15,
+      });
+      this.canvas.add(img).setActiveObject(img);
+    });
+    if (this.canvas.freeDrawingBrush) {
+      this.canvas.freeDrawingBrush.color = '#4286f4';
+      this.canvas.freeDrawingBrush.width = 1;
+    }
+    this.canvas.on({
+      'touch:gesture': () => {
+        const text = document.createTextNode(' Gesture ');
+        console.log(text);
+      },
+      'touch:drag': () => {
+        const text = document.createTextNode(' Dragging ');
+        console.log(text);
+      },
+      'touch:orientation': () => {
+        const text = document.createTextNode(' Orientation ');
+        console.log(text);
+      },
+      'touch:shake': () => {
+        const text = document.createTextNode(' Shaking ');
+        console.log(text);
+      },
+      'touch:longpress': () => {
+        const text = document.createTextNode(' Longpress ');
+        console.log(text);
       }
+    });
+    this.resize();
   }
-  if (res === 'up' || res === 'out') {
-      this.flag = false;
+  newDraw() {
+    this.canvas.isDrawingMode = false;
   }
-  if (res === 'move') {
-      if (this.flag) {
-          this.prevX = this.currX;
-          this.prevY = this.currY;
-          this.currX = e.clientX - this.canvas.offsetLeft;
-          this.currY = e.clientY - this.canvas.offsetTop;
-          this.draw();
-      }
+  resize() {
+    this.canvas.setWidth(window.innerWidth);
+    this.canvas.setHeight(1000);
   }
-  }
-
-
 
 }
