@@ -7,12 +7,16 @@
             <i class="large material-icons teal-text text-darken-3">visibility_off</i>
         </a>
         <ul>
-            <li><a class="btn-floating grey lighten-5"><i class="material-icons grey-text text-darken-4">mode_edit</i></a></li>
-            <li><a class="btn-floating grey lighten-5" (click)="newDraw($event)"><i class="material-icons grey-text text-darken-4">select_all</i></a></li>
-            <li><a class="btn-floating grey lighten-5"><i class="material-icons red-text">brightness_1</i></a></li>
-            <li><a class="btn-floating grey lighten-5"><i class="material-icons grey-text text-darken-4">crop_7_5</i></a></li>
-            <li><a class="btn-floating grey lighten-5"><i class="material-icons grey-text text-darken-4">delete</i></a></li>
+            <li><a class="btn-floating grey lighten-5"><i class="material-icons grey-text text-darken-4" (click)="activeDrawing(true)">mode_edit</i></a></li>
+            <li><a class="btn-floating grey lighten-5" (click)="newDraw($event)"><i class="material-icons grey-text text-darken-4" (click)="addText($event)">select_all</i></a></li>
+            <li>
+                    <input #color class="color-input" type="color"
+                    value="#000000" (input)="colorChange($event)">
+                    <label for="head">Head</label>
+            </li>
+            <!-- <li><a class="btn-floating grey lighten-5"><i class="material-icons grey-text text-darken-4">crop_7_5</i></a></li> -->
+            <li><a class="btn-floating grey lighten-5"><i class="material-icons grey-text text-darken-4" (click)="clearCanvas($event)">delete</i></a></li>
         </ul>
     </div>
-    <a class="btn-floating btn-floating grey lighten-5 btn-screen" [ngClass]="{'tools-show': isNav }"><i class="material-icons grey-text text-darken-4">zoom_out_map</i></a>
+    <a class="btn-floating btn-floating grey lighten-5 btn-screen" [ngClass]="{'tools-show': isNav }"><i class="material-icons grey-text text-darken-4" (click)="activeDrawing(false)">zoom_out_map</i></a>
 </div>

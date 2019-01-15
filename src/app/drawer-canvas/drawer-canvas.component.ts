@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
 import { fabric } from 'fabric';
 
 @Component({
@@ -8,48 +8,23 @@ import { fabric } from 'fabric';
 })
 
 export class DrawerCanvasComponent implements OnInit {
+
+  constructor() {
+   this.canvas = null;
+  }
   isNav: boolean;
-  @HostListener("window:scroll", ['$event'])
-  doSomethingOnWindowsScroll($event:Event){
-    let scrollOffset = $event.srcElement.children[0].scrollTop;
+
+  canvas: any;
+  @ViewChild('color') colorInput;
+  @HostListener('window:scroll', ['$event'])
+
+  doSomethingOnWindowsScroll($event: any) {
+    const scrollOffset = $event.srcElement.children[0].scrollTop;
     if (scrollOffset < 5) {
       this.isNav = false;
     } else {
       this.isNav = true;
     }
-  }
-  ctx: any;
-  canvas: any;
-  flag: boolean;
-  prevX: number;
-  currX: number;
-  prevY: number;
-  currY: number;
-  dot_flag: boolean;
-  color: string;
-  y: number;
-
-  constructor() {
-    this.ctx = null;
-    this.canvas = null;
-    this.flag = false;
-    this.prevX = 0;
-    this.currX = 0;
-    this.prevY = 0;
-    this.currY = 0;
-    this.dot_flag = false;
-    this.color = 'black';
-    this.y = 2;
-  }
-
-  draw() {
-    this.ctx.beginPath();
-    this.ctx.moveTo(this.prevX, this.prevY);
-    this.ctx.lineTo(this.currX, this.currY);
-    this.ctx.strokeStyle = this.color;
-    this.ctx.lineWidth = this.y;
-    this.ctx.stroke();
-    this.ctx.closePath();
   }
   ngOnInit() {
     this.canvas = new fabric.Canvas('canvas', {
@@ -66,31 +41,9 @@ export class DrawerCanvasComponent implements OnInit {
       this.canvas.add(img).setActiveObject(img);
     });
     if (this.canvas.freeDrawingBrush) {
-      this.canvas.freeDrawingBrush.color = '#4286f4';
+      this.canvas.freeDrawingBrush.color = this.colorInput.nativeElement.value || '#000000';
       this.canvas.freeDrawingBrush.width = 1;
     }
-    this.canvas.on({
-      'touch:gesture': () => {
-        const text = document.createTextNode(' Gesture ');
-        console.log(text);
-      },
-      'touch:drag': () => {
-        const text = document.createTextNode(' Dragging ');
-        console.log(text);
-      },
-      'touch:orientation': () => {
-        const text = document.createTextNode(' Orientation ');
-        console.log(text);
-      },
-      'touch:shake': () => {
-        const text = document.createTextNode(' Shaking ');
-        console.log(text);
-      },
-      'touch:longpress': () => {
-        const text = document.createTextNode(' Longpress ');
-        console.log(text);
-      }
-    });
     this.resize();
   }
   newDraw() {
@@ -99,6 +52,15 @@ export class DrawerCanvasComponent implements OnInit {
   resize() {
     this.canvas.setWidth(window.innerWidth);
     this.canvas.setHeight(window.innerHeight + 10);
+  }
+  activeDrawing(active: boolean) {
+    this.canvas.isDrawingMode = active;
+  }
+  colorChange(event: any) {
+    this.canvas.freeDrawingBrush.color = this.colorInput.nativeElement.value || '#000000';
+  }
+  clearCanvas(event: any) {
+    this.canvas.clear();
   }
 
 }
