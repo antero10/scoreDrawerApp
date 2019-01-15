@@ -19,5 +19,5 @@ jobs:
       - checkout
       - run: |
           docker login -u $DOCKER_USER -p $DOCKER_PASS
-      - run: docker build -t brandm3diagroup/startbucks-drawer .
+      - run: docker build -t brandm3diagroup/startbucks-drawer:CIRCLE_TAG .
       - run: docker push brandm3diagroup/startbucks-drawer:CIRCLE_TAG
