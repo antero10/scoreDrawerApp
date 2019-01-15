@@ -1,12 +1,23 @@
 version: 2
 jobs:
- build:
-  machine: true
-  branches:
-      only:
-        - master
-  steps:
-    - checkout
-    - run: |
-        docker login -u $DOCKER_USER -p $DOCKER_PASS
-    - run: docker build -t brandm3diagroup/startbucks-drawer .
+  build:
+    machine: true
+    branches:
+        only:
+          - master
+    steps:
+      - checkout
+      - run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run: docker build -t brandm3diagroup/startbucks-drawer .
+  push:
+    machine: true
+    branches:
+      onlye:
+        - tag-.*/
+    steps:
+      - checkout
+      - run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run: docker build -t brandm3diagroup/startbucks-drawer .
+      - run: docker push brandm3diagroup/startbucks-drawer:CIRCLE_TAG
