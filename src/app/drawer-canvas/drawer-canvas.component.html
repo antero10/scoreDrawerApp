@@ -12,7 +12,7 @@
                 </p>
             </form>
             <label for="color">
-                <a class="btn-floating btn-floating grey lighten-5" (click)="activeDrawing(true)"><i class="material-icons" [ngStyle]="{ 'color': canvas.freeDrawingBrush.color }" (click)="addText($event)">palette</i></a>            
+                <a class="btn-floating btn-floating grey lighten-5" (click)="activeDrawing(true)"><i class="material-icons" [ngStyle]="{ 'color': canvas.freeDrawingBrush.color }">palette</i></a>            
             </label>
             <a class="btn-floating btn-floating grey lighten-5" (click)="clearCanvas($event)"><i class="material-icons grey-text text-darken-4" (click)="clearCanvas($event)">delete</i></a>
         </div>
