@@ -52,7 +52,7 @@ export class DrawerCanvasComponent implements OnInit {
   }
   resize() {
     this.canvas.setWidth(window.innerWidth);
-    this.canvas.setHeight(window.innerHeight - 80);
+    this.canvas.setHeight(window.innerHeight - 100);
   }
   activeDrawing(active: boolean) {
     this.canvas.isDrawingMode = active;
