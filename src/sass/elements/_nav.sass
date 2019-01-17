@@ -1,33 +1,61 @@
-.brand-container 
-     display: flex
-     transition: .5s
-     height: 600px
-     border-bottom: 30px solid $primary
-     z-index: 2
-     .logo 
-          width: 150px
-          height: 150px
-          &:hover
-               background-size: 100%
-               transition: .5s
-.brand-nav
-     position: fixed
-     width: 100%
-     height: 130px
-     top: 0
-     z-index: 2
-     border-bottom: 3px solid $primary
-     div.logo
-          width: 100px
-          height: 100px
-          margin-top: 15px
 .brand 
      background-color: $grey-light
      transition: .2s
-     .brand-logo
-          background-image: url('http://colonscreeningforlife.com//files/starbucks-logo-png-transparent.png')
-          background-size: 90%
-          background-repeat: no-repeat
-          background-position: center
-          transition: .2s
+     width: 100%
+     display: flex
+     div.content
           margin: auto auto
+          width: 400px
+          height: 500px
+          .brand-logo
+               background-image: url('http://colonscreeningforlife.com//files/starbucks-logo-png-transparent.png')
+               background-size: 90%
+               background-repeat: no-repeat
+               background-position: center
+               transition: .2s
+               margin: 0 auto
+
+
+.brand-container 
+     position: fixed
+     top: 0
+     height: 100%
+     border-bottom: 80px solid $primary
+     z-index: 2
+     div.content
+          margin: auto auto
+          width: 400px
+          height: 500px
+          .brand-logo
+               width: 300px
+               height: 300px
+          h2
+               color: $primary
+               text-align: center
+               margin-top: 50px
+          a
+               background: transparent
+               margin: 0 auto
+               margin-top: 40px
+               display: flex
+               i
+                    font-size: 2em
+                    color: $grey !important
+.brand-nav
+     height: 250px
+     border-bottom: 10px solid $primary
+     div.content
+               margin: auto auto
+               width: 250px
+               height: 250px
+               .brand-logo
+                    width: 200px
+                    height: 200px
+                    margin-top: 15px
+               h2,
+                    display: none
+               a
+                    position: absolute
+                    right: 115px
+                    top: 95px
+                    background: $primary

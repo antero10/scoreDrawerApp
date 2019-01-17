@@ -31,16 +31,6 @@ export class DrawerCanvasComponent implements OnInit {
     this.canvas = new fabric.Canvas('canvas', {
       isDrawingMode: true
     });
-    fabric.Image.fromURL('https://www.askideas.com/media/16/Pug-Puppy-Running-On-Grass.jpg', (img) => {
-      img.scale(0.5).set({
-        left: 150,
-        top: 150,
-        width: 100,
-        height: 100,
-        angle: -15,
-      });
-      this.canvas.add(img).setActiveObject(img);
-    });
     if (this.canvas.freeDrawingBrush) {
       this.canvas.freeDrawingBrush.color = this.colorInput.nativeElement.value || '#000000';
       this.canvas.freeDrawingBrush.width = 1;
@@ -52,7 +42,12 @@ export class DrawerCanvasComponent implements OnInit {
   }
   resize() {
     this.canvas.setWidth(window.innerWidth);
-    this.canvas.setHeight(window.innerHeight - 100);
+    if  (window.innerHeight / 2 < 500) {
+      this.canvas.setHeight(500);
+    }
+    else {
+      this.canvas.setHeight(window.innerHeight / 2);
+    }
   }
   activeDrawing(active: boolean) {
     this.canvas.isDrawingMode = active;

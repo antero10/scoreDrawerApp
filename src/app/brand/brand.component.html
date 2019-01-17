@@ -1,4 +1,10 @@
-<div class="brand" (scroll)="doSomethingOnScroll($event)" 
-  [ngClass]="{'brand-container': !isNav, 'brand-nav': isNav}">
-  <div class="brand-logo logo"></div>
+<div class="brand" [ngClass]="{'brand-container': !isNav, 'brand-nav': isNav}">
+  <div class="content">
+      <div class="brand-logo logo"></div>
+      <h2>START DRAWING!</h2>
+      <a class="btn-floating btn-large" (click)="isNav = !isNav">
+        <i class="medium material-icons" *ngIf="!isNav">touch_app</i>
+        <i class="medium material-icons" *ngIf="isNav">arrow_drop_down</i>
+      </a>
+  </div>
 </div>
