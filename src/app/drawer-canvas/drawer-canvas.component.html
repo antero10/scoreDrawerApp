@@ -1,23 +1,24 @@
-<div class="border canvas-drawer" (scroll)="doSomethingOnScroll($event)">
+<div class="border canvas-drawer">
     <canvas id="canvas" width="600" height="600"></canvas>
-    <a class="btn-floating btn-floating grey lighten-5 btn-undo" [ngClass]="{'tools-show': isNav }"><i class="material-icons grey-text text-darken-4">undo</i></a>
-    <div class="tool-options" [ngClass]="{'tools-show': isNav }">
-        <a class="btn-floating btn-floating grey lighten-5" (click)="toolsOpen = !toolsOpen" *ngIf="!toolsOpen" [ngClass]="{'tools-show': isNav }"><i class="material-icons teal-text text-darken-3">menu</i></a>
-        <a class="btn-floating btn-floating grey lighten-5" (click)="toolsOpen = !toolsOpen" *ngIf="toolsOpen" [ngClass]="{'tools-show': isNav }"><i class="material-icons teal-text text-darken-3">visibility_off</i></a>
+    <a class="btn-floating btn-large grey lighten-5 btn-undo"><i class="material-icons grey-text text-darken-4">undo</i></a>
+    <div class="tool-options">
+        <a class="btn-floating btn-large grey lighten-5" (click)="toolsOpen = !toolsOpen" *ngIf="!toolsOpen"><i class="material-icons teal-text text-darken-3">menu</i></a>
+        <a class="btn-floating btn-large grey lighten-5" (click)="toolsOpen = !toolsOpen" *ngIf="toolsOpen"><i class="material-icons teal-text text-darken-3">visibility_off</i></a>
+
         <div class="tools" [ngClass]="{'tools-open': toolsOpen, 'tools-close': !toolsOpen }">
-            <a class="btn-floating btn-floating grey lighten-5" (click)="activeDrawing(true)"><i class="material-icons grey-text text-darken-4">mode_edit</i></a>
+            <a class="btn-floating btn-large grey lighten-5" (click)="activeDrawing(true)"><i class="material-icons grey-text text-darken-4">mode_edit</i></a>
             <form action="#" class="range-select">
                 <p class="range-field">
                     <input #strong type="range" value="1" min="1" max="50" (input)="strongChange($event)" />
                 </p>
             </form>
             <label for="color">
-                <a class="btn-floating btn-floating grey lighten-5" (click)="activeDrawing(true)"><i class="material-icons" [ngStyle]="{ 'color': canvas.freeDrawingBrush.color }">palette</i></a>            
+                <a class="btn-floating btn-large grey lighten-5" (click)="activeDrawing(true)"><i class="material-icons" [ngStyle]="{ 'color': canvas.freeDrawingBrush.color }">palette</i></a>            
             </label>
-            <a class="btn-floating btn-floating grey lighten-5" (click)="clearCanvas($event)"><i class="material-icons grey-text text-darken-4" (click)="clearCanvas($event)">delete</i></a>
+            <a class="btn-floating btn-large grey lighten-5" (click)="clearCanvas($event)"><i class="material-icons grey-text text-darken-4" (click)="clearCanvas($event)">delete</i></a>
+            <a class="btn-floating btn-large grey lighten-5" (click)="activeDrawing(false)"><i class="material-icons grey-text text-darken-4" (click)="clearCanvas($event)">zoom_out_map</i></a>
         </div>
     </div>
-    <a class="btn-floating btn-floating grey lighten-5 btn-screen" [ngClass]="{'tools-show': isNav }"><i class="material-icons grey-text text-darken-4" (click)="activeDrawing(false)">zoom_out_map</i></a>
 </div>
 <input #color id="color" class="color-input" type="color"
 value="#000000" (input)="colorChange($event)">

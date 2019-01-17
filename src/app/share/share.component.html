@@ -1,27 +1,27 @@
-<div class="container-share">
-  <div class="start none">
-      <h5>START DRAWING!</h5>
+<div class="container-share" [style.height.px]="heightShare">
+  <div class="start" [ngClass]="{ 'none': step != 1 }">
+      <h1>START DRAWING!</h1>
       <i class="material-icons">touch_app</i>
   </div>
-  <div class="finished none">
-      <a class="btn btn-finished">FINISHED!</a>
+  <div class="finished" [ngClass]="{ 'none': step != 2 }">
+      <a class="btn btn-finished" (click)="step = 3">FINISHED!</a>
   </div>
-  <div class="form1">
+  <div class="form1" [ngClass]="{ 'none': step != 3 }">
     <p class="text-primary">Share your artwork to inspire & engage others!</p>
-    <form action="">
-      <input type="text" placeholder="Full Name">
+    <form action="" #f="ngForm">
+      <input type="text" placeholder="Full Name" name="name" ngModel required #name="ngModel" [matKeyboard]>
       <input type="text" placeholder="Email">
       <input type="text" placeholder="Number">
       <div class="buttons">
-          <a class="btn btn-skip">SKIP</a>
-          <a class="btn btn-share">SHARE ARTWORK!</a>
+          <a class="btn btn-skip" (click)="step = 4">SKIP</a>
+          <a class="btn btn-share" (click)="step = 4">SHARE ARTWORK!</a>
       </div>
     </form>
   </div>
-  <div class="form2 none">
+  <div class="form2" [ngClass]="{ 'none': step != 4 }">
     <p class="text-primary">Thanks for being inspired & creative</p>
     <div class="username">
-      Jessica West
+      {{ name.value }}
     </div>
     <p class="text-italic">Please TAP to Select your prefered SM:</p>
     <div class="sm-container">
