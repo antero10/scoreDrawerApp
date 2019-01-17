@@ -9,7 +9,7 @@
   <div class="form1" [ngClass]="{ 'none': step != 3 }">
     <p class="text-primary">Share your artwork to inspire & engage others!</p>
     <form action="" #f="ngForm">
-      <input type="text" placeholder="Full Name" name="name" ngModel required #name="ngModel">
+      <input type="text" placeholder="Full Name" name="name" ngModel required #name="ngModel" [matKeyboard]>
       <input type="text" placeholder="Email">
       <input type="text" placeholder="Number">
       <div class="buttons">

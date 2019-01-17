@@ -14,7 +14,7 @@ export class ShareComponent implements OnInit {
 
   ngOnInit() {
     this.heightShare = (window.innerHeight / 2) - 200;
-    this.step = 1;
+    this.step = 2;
   }
 
 }
